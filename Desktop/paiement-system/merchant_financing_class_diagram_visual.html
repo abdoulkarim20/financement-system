@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagrammes de Classes - Système de Financement</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            padding: 30px;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .module {
+            margin-bottom: 40px;
+            border: 2px solid #3498db;
+            border-radius: 10px;
+            padding: 20px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+        
+        .module-title {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            text-align: center;
+            padding: 10px;
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            border-radius: 8px;
+        }
+        
+        .classes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .class-box {
+            border: 2px solid #34495e;
+            border-radius: 8px;
+            background: white;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .class-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+        
+        .class-header {
+            background: linear-gradient(135deg, #34495e, #2c3e50);
+            color: white;
+            padding: 12px;
+            font-weight: bold;
+            font-size: 1.2em;
+            text-align: center;
+            border-radius: 6px 6px 0 0;
+        }
+        
+        .class-content {
+            padding: 15px;
+        }
+        
+        .attributes, .methods {
+            margin-bottom: 15px;
+        }
+        
+        .section-title {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 8px;
+            font-size: 1.1em;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 5px;
+        }
+        
+        .attribute, .method {
+            margin: 4px 0;
+            padding: 3px 8px;
+            background: #f8f9fa;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        
+        .attribute {
+            color: #e74c3c;
+        }
+        
+        .method {
+            color: #27ae60;
+        }
+        
+        .enum-box {
+            background: linear-gradient(135deg, #f39c12, #e67e22);
+            color: white;
+        }
+        
+        .enum-box .class-header {
+            background: rgba(0,0,0,0.2);
+        }
+        
+        .service-box {
+            background: linear-gradient(135deg, #9b59b6, #8e44ad);
+            color: white;
+        }
+        
+        .service-box .class-header {
+            background: rgba(0,0,0,0.2);
+        }
+        
+        .service-box .method {
+            background: rgba(255,255,255,0.1);
+            color: white;
+        }
+        
+        .repository-box {
+            background: linear-gradient(135deg, #1abc9c, #16a085);
+            color: white;
+        }
+        
+        .repository-box .class-header {
+            background: rgba(0,0,0,0.2);
+        }
+        
+        .repository-box .method {
+            background: rgba(255,255,255,0.1);
+            color: white;
+        }
+        
+        .relationships {
+            margin-top: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #ecf0f1, #bdc3c7);
+            border-radius: 10px;
+            border: 2px solid #95a5a6;
+        }
+        
+        .relationship-item {
+            margin: 8px 0;
+            padding: 8px;
+            background: white;
+            border-radius: 5px;
+            border-left: 4px solid #3498db;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📊 Diagrammes de Classes - Système de Financement pour Commerçants</h1>
+        
+        <!-- Module Entités Métier -->
+        <div class="module">
+            <div class="module-title">🏢 Entités Métier Principales</div>
+            <div class="classes-grid">
+                <div class="class-box">
+                    <div class="class-header">Merchant</div>
+                    <div class="class-content">
+                        <div class="attributes">
+                            <div class="section-title">Attributs</div>
+                            <div class="attribute">- String id</div>
+                            <div class="attribute">- String name</div>
+                            <div class="attribute">- String email</div>
+                            <div class="attribute">- String phone</div>
+                            <div class="attribute">- String address</div>
+                            <div class="attribute">- String businessType</div>
+                            <div class="attribute">- Date registrationDate</div>
+                            <div class="attribute">- MerchantStatus status</div>
+                            <div class="attribute">- CreditScore creditScore</div>
+                        </div>
+                        <div class="methods">
+                            <div class="section-title">Méthodes</div>
+                            <div class="method">+ register()</div>
+                            <div class="method">+ updateProfile()</div>
+                            <div class="method">+ getCreditScore()</div>
+                            <div class="method">+ getFinancingHistory()</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="class-box">
+                    <div class="class-header">FinancingRequest</div>
+                    <div class="class-content">
+                        <div class="attributes">
+                            <div class="section-title">Attributs</div>
+                            <div class="attribute">- String requestId</div>
+                            <div class="attribute">- String merchantId</div>
+                            <div class="attribute">- BigDecimal amount</div>
+                            <div class="attribute">- String purpose</div>
+                            <div class="attribute">- Date requestDate</div>
+                            <div class="attribute">- RequestStatus status</div>
+                            <div class="attribute">- String riskAssessment</div>
+                            <div class="attribute">- BigDecimal approvedAmount</div>
+                        </div>
+                        <div class="methods">
+                            <div class="section-title">Méthodes</div>
+                            <div class="method">+ submitRequest()</div>
+                            <div class="method">+ updateStatus()</div>
+                            <div class="method">+ calculateRisk()</div>
+                            <div class="method">+ approve()</div>
+                            <div class="method">+ reject()</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="class-box">
+                    <div class="class-header">CreditScore</div>
+                    <div class="class-content">
+                        <div class="attributes">
+                            <div class="section-title">Attributs</div>
+                            <div class="attribute">- String merchantId</div>
+                            <div class="attribute">- Integer score</div>
+                            <div class="attribute">- String category</div>
+                            <div class="attribute">- Date lastUpdated</div>
+                            <div class="attribute">- List&lt;CreditFactor&gt; factors</div>
+                        </div>
+                        <div class="methods">
+                            <div class="section-title">Méthodes</div>
+                            <div class="method">+ calculateScore()</div>
+                            <div class="method">+ updateScore()</div>
+                            <div class="method">+ getCreditCategory()</div>
+                            <div class="method">+ getFactors()</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="class-box">
+                    <div class="class-header">Loan</div>
+                    <div class="class-content">
+                        <div class="attributes">
+                            <div class="section-title">Attributs</div>
+                            <div class="attribute">- String loanId</div>
+                            <div class="attribute">- String merchantId</div>
+                            <div class="attribute">- BigDecimal principal</div>
+                            <div class="attribute">- BigDecimal interestRate</div>
+                            <div class="attribute">- Integer termMonths</div>
+                            <div class="attribute">- Date startDate</div>
+                            <div class="attribute">- LoanStatus status</div>
+                            <div class="attribute">- BigDecimal remainingBalance</div>
+                        </div>
+                        <div class="methods">
+                            <div class="section-title">Méthodes</div>
+                            <div class="method">+ calculatePayments()</div>
+                            <div class="method">+ makePayment()</div>
+                            <div class="method">+ getPaymentSchedule()</div>
+                            <div class="method">+ checkStatus()</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Module Paiements -->
+        <div class="module">
+            <div class="module-title">💳 Module Paiements & QR</div>
+            <div class="classes-grid">
+                <div class="class-box">
+                    <div class="class-header">Payment</div>
+                    <div class="class-content">
+                        <div class="attributes">
+                            <div class="section-title">Attributs</div>
+                            <div class="attribute">- String paymentId</div>
+                            <div class="attribute">- String loanId</div>
+                            <div class="attribute">- BigDecimal amount</div>
+                            <div class="attribute">- Date paymentDate</div>
+                            <div class="attribute">- PaymentStatus status</div>
+                            <div class="attribute">- String paymentMethod</div>
+                            <div class="attribute">- String transactionId</div>
+                        </div>
+                        <div class="methods">
+                            <div class="section-title">Méthodes</div>
+                            <div class="method">+ processPayment()</div>
+                            <div class="method">+ sendReminder()</div>
+                            <div class="method">+ markAsOverdue()</div>
+                            <div class="method">+ refund()</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="class-box">
+                    <div class="class-header">QRPayment</div>
+                    <div class="class-content">
+                        <div class="attributes">
+                            <div class="section-title">Attributs</div>
+                            <div class="attribute">- String qrId</div>
+                            <div class="attribute">- String merchantId</div>
+                            <div class="attribute">- BigDecimal amount</div>
+                            <div class="attribute">- String qrCode</div>
+                            <div class="attribute">- Date generatedAt</div>
+                            <div class="attribute">- Date expiresAt</div>
+                            <div class="attribute">- QRStatus status</div>
+                        </div>
+                        <div class="methods">
+                            <div class="section-title">Méthodes</div>
+                            <div class="method">+ generateQR()</div>
+                            <div class="method">+ processPayment()</div>
+                            <div class="method">+ validateQR()</div>
+                            <div class="method">+ expire()</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="class-box">
+                    <div class="class-header">MobileMoneyTransaction</div>
+                    <div class="class-content">
+                        <div class="attributes">
+                            <div class="section-title">Attributs</div>
+                            <div class="attribute">- String transactionId</div>
+                            <div class="attribute">- String merchantId</div>
+                            <div class="attribute">- String customerPhone</div>
+                            <div class="attribute">- BigDecimal amount</div>
+                            <div class="attribute">- String provider</div>
+                            <div class="attribute">- Date timestamp</div>
+                            <div class="attribute">- TransactionStatus status</div>
+                        </div>
+                        <div class="methods">
+                            <div class="section-title">Méthodes</div>
+                            <div class="method">+ initializeTransaction()</div>
+                            <div class="method">+ processCallback()</div>
+                            <div class="method">+ verifyTransaction()</div>
+                            <div class="method">+ refund()</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="class-box">
+                    <div class="class-header">Reimbursement</div>
+                    <div class="class-content">
+                        <div class="attributes">
+                            <div class="section-title">Attributs</div>
+                            <div class="attribute">- String reimbursementId</div>
+                            <div class="attribute">- String merchantId</div>
+                            <div class="attribute">- BigDecimal amount</div>
+                            <div class="attribute">- String reason</div>
+                            <div class="attribute">- Date requestDate</div>
+                            <div class="attribute">- ReimbursementStatus status</div>
+                            <div class="attribute">- String bankAccount</div>
+                        </div>
+                        <div class="methods">
+                            <div class="section-title">Méthodes</div>
+                            <div class="method">+ requestReimbursement()</div>
+                            <div class="method">+ processReimbursement()</div>
+                            <div class="method">+ trackStatus()</div>
+                            <div class="method">+ cancel()</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Module Utilisateurs -->
+        <div class="module">
+            <div class="module-title">👥 Module Utilisateurs & Notifications</div>
+            <div class="classes-grid">
+                <div class="class-box">
+                    <div class="class-header">User</div>
+                    <div class="class-content">
+                        <div class="attributes">
+                            <div class="section-title">Attributs</div>
+                            <div class="attribute">- String userId</div>
+                            <div class="attribute">- String username</div>
+                            <div class="attribute">- String email</div>
+                            <div class="attribute">- String hashedPassword</div>
+                            <div class="attribute">- UserRole role</div>
+                            <div class="attribute">- Date lastLogin</div>
+                            <div class="attribute">- Boolean isActive</div>
+                        </div>
+                        <div class="methods">
+                            <div class="section-title">Méthodes</div>
+                            <div class="method">+ authenticate()</div>
+                            <div class="method">+ changePassword()</div>
+                            <div class="method">+ updateProfile()</div>
+                            <div class="method">+ logout()</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="class-box">
+                    <div class="class-header">Admin</div>
+                    <div class="class-content">
+                        <div class="attributes">
+                            <div class="section-title">Attributs</div>
+                            <div class="attribute">- String adminId</div>
+                            <div class="attribute">- List&lt;Permission&gt; permissions</div>
+                        </div>
+                        <div class="methods">
+                            <div class="section-title">Méthodes</div>
+                            <div class="method">+ manageMerchants()</div>
+                            <div class="method">+ approveFinancing()</div>
+                            <div class="method">+ generateReports()</div>
+                            <div class="method">+ manageSystem()</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="class-box">
+                    <div class="class-header">Analyst</div>
+                    <div class="class-content">
+                        <div class="attributes">
+                            <div class="section-title">Attributs</div>
+                            <div class="attribute">- String analystId</div>
+                            <div class="attribute">- String department</div>
+                        </div>
+                        <div class="methods">
+                            <div class="section-title">Méthodes</div>
+                            <div class="method">+ analyzeRisk()</div>
+                            <div class="method">+ generateReports()</div>
+                            <div class="method">+ reviewApplications()</div>
+                            <div class="method">+ updateCreditScores()</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="class-box">
+                    <div class="class-header">Notification</div>
+                    <div class="class-content">
+                        <div class="attributes">
+                            <div class="section-title">Attributs</div>
+                            <div class="attribute">- String notificationId</div>
+                            <div class="attribute">- String recipientId</div>
+                            <div class="attribute">- String message</div>
+                            <div class="attribute">- NotificationType type</div>
+                            <div class="attribute">- NotificationChannel channel</div>
+                            <div class="attribute">- Date createdAt</div>
+                            <div class="attribute">- Boolean isRead</div>
+                        </div>
+                        <div class="methods">
+                            <div class="section-title">Méthodes</div>
+                            <div class="method">+ sendSMS()</div>
+                            <div class="method">+ sendEmail()</div>
+                            <div class="method">+ sendPush()</div>
+                            <div class="method">+ markAsRead()</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Module Services -->
+        <div class="module">
+            <div class="module-title">⚙️ Couche Services</div>
+            <div class="classes-grid">
+                <div class="class-box service-box">
+                    <div class="class-header">MerchantService</div>
+                    <div class="class-content">
+                        <div class="methods">
+                            <div class="section-title">Méthodes</div>
+                            <div class="method">+ registerMerchant(MerchantData)</div>
+                            <div class="method">+ updateMerchant(String, MerchantData)</div>
+                            <div class="method">+ getMerchant(String)</div>
+                            <div class="method">+ listMerchants()</div>
+                            <div class="method">+ validateMerchant(String)</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="class-box service-box">
+                    <div class="class-header">FinancingService</div>
+                    <div class="class-content">
+                        <div class="methods">
+                            <div class="section-title">Méthodes</div>
+                            <div class="method">+ submitFinancingRequest(FinancingRequestData)</div>
+                            <div class="method">+ evaluateRequest(String)</div>
+                            <div class="method">+ approveFinancing(String)</div>
+                            <div class="method">+ rejectFinancing(String)</div>
+                            <div class="method">+ getFinancingHistory(String)</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="class-box service-box">
+                    <div class="class-header">PaymentService</div>
+                    <div class="class-content">
+                        <div class="methods">
+                            <div class="section-title">Méthodes</div>
+                            <div class="method">+ processQRPayment(QRPaymentData)</div>
+                            <div class="method">+ processMobileMoneyPayment(MobileMoneyData)</div>
+                            <div class="method">+ generateQRCode(String, BigDecimal)</div>
+                            <div class="method">+ validatePayment(String)</div>
+                            <div class="method">+ getPaymentHistory(String)</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="class-box service-box">
+                    <div class="class-header">CreditService</div>
+                    <div class="class-content">
+                        <div class="methods">
+                            <div class="section-title">Méthodes</div>
+                            <div class="method">+ calculateCreditScore(String)</div>
+                            <div class="method">+ updateCreditScore(String)</div>
+                            <div class="method">+ getCreditRules()</div>
+                            <div class="method">+ assessRisk(FinancingRequest)</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="class-box service-box">
+                    <div class="class-header">NotificationService</div>
+                    <div class="class-content">
+                        <div class="methods">
+                            <div class="section-title">Méthodes</div>
+                            <div class="method">+ sendSMS(String, String)</div>
+                            <div class="method">+ sendEmail(String, String)</div>
+                            <div class="method">+ sendPushNotification(String, String)</div>
+                            <div class="method">+ getNotificationHistory(String)</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="class-box service-box">
+                    <div class="class-header">ReimbursementService</div>
+                    <div class="class-content">
+                        <div class="methods">
+                            <div class="section-title">Méthodes</div>
+                            <div class="method">+ requestReimbursement(ReimbursementData)</div>
+                            <div class="method">+ processReimbursement(String)</div>
+                            <div class="method">+ trackReimbursement(String)</div>
+                            <div class="method">+ cancelReimbursement(String)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Module Repositories -->
+        <div class="module">
+            <div class="module-title">🗄️ Couche Données (Repositories)</div>
+            <div class="classes-grid">
+                <div class="class-box repository-box">
+                    <div class="class-header">MerchantRepository</div>
+                    <div class="class-content">
+                        <div class="methods">
+                            <div class="section-title">Méthodes</div>
+                            <div class="method">+ save(Merchant)</div>
+                            <div class="method">+ findById(String)</div>
+                            <div class="method">+ findByEmail(String)</div>
+                            <div class="method">+ findAll()</div>
+                            <div class="method">+ delete(String)</div>
+                            <div class="method">+ update(Merchant)</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="class-box repository-box">
+                    <div class="class-header">FinancingRepository</div>
+                    <div class="class-content">
+                        <div class="methods">
+                            <div class="section-title">Méthodes</div>
+                            <div class="method">+ save(FinancingRequest)</div>
+                            <div class="method">+ findById(String)</div>
+                            <div class="method">+ findByMerchantId(String)</div>
+                            <div class="method">+ findByStatus(RequestStatus)</div>
+                            <div class="method">+ update(FinancingRequest)</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="class-box repository-box">
+                    <div class="class-header">PaymentRepository</div>
+                    <div class="class-content">
+                        <div class="methods">
+                            <div class="section-title">Méthodes</div>
+                            <div class="method">+ save(Payment)</div>
+                            <div class="method">+ findById(String)</div>
+                            <div class="method">+ findByLoanId(String)</div>
+                            <div class="method">+ findByDateRange(Date, Date)</div>
+                            <div class="method">+ update(Payment)</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="class-box repository-box">
+                    <div class="class-header">LoanRepository</div>
+                    <div class="class-content">
+                        <div class="methods">
+                            <div class="section-title">Méthodes</div>
+                            <div class="method">+ save(Loan)</div>
+                            <div class="method">+ findById(String)</div>
+                            <div class="method">+ findByMerchantId(String)</div>
+                            <div class="method">+ findActiveLoans()</div>
+                            <div class="method">+ update(Loan)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Module Énumérations -->
+        <div class="module">
+            <div class="module-title">📝 Énumérations</div>
+            <div class="classes-grid">
+                <div class="class-box enum-box">
+                    <div class="class-header">MerchantStatus</div>
+                    <div class="class-content">
+                        <div class="attributes">
+                            <div class="section-title">Valeurs</div>
+                            <div class="attribute">ACTIVE</div>
+                            <div class="attribute">INACTIVE</div>
+                            <div class="attribute">SUSPENDED</div>
+                            <div class="attribute">PENDING_VERIFICATION</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="class-box enum-box">
+                    <div class="class-header">RequestStatus</div>
+                    <div class="class-content">
+                        <div class="attributes">
+                            <div class="section-title">Valeurs</div>
+                            <div class="attribute">PENDING</div>
+                            <div class="attribute">UNDER_REVIEW</div>
+                            <div class="attribute">APPROVED</div>
+                            <div class="attribute">REJECTED</div>
+                            <div class="attribute">CANCELLED</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="class-box enum-box">
+                    <div class="class-header">PaymentStatus</div>
+                    <div class="class-content">
+                        <div class="attributes">
+                            <div class="section-title">Valeurs</div>
+                            <div class="attribute">PENDING</div>
+                            <div class="attribute">COMPLETED</div>
+                            <div class="attribute">FAILED</div>
+                            <div class="attribute">REFUNDED</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="class-box enum-box">
+                    <div class="class-header">NotificationType</div>
+                    <div class="class-content">
+                        <div class="attributes">
+                            <div class="section-title">Valeurs</div>
+                            <div class="attribute">PAYMENT_REMINDER</div>
+                            <div class="attribute">LOAN_APPROVAL</div>
+                            <div class="attribute">PAYMENT_CONFIRMATION</div>
+                            <div class="attribute">SYSTEM_ALERT</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="class-box enum-box">
+                    <div class="class-header">NotificationChannel</div>
+                    <div class="class-content">
+                        <div class="attributes">
+                            <div class="section-title">Valeurs</div>
+                            <div class="attribute">SMS</div>
+                            <div class="attribute">EMAIL</div>
+                            <div class="attribute">PUSH</div>
+                            <div class="attribute">IN_APP</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Relations -->
+        <div class="relationships">
+            <div class="module-title">🔗 Relations Principales</div>
+            <div class="relationship-item">
+                <strong>Merchant</strong> (1) ↔ (0..*) <strong>FinancingRequest</strong> : Un commerçant peut soumettre plusieurs demandes de financement
+            </div>
+            <div class="relationship-item">
+                <strong>Merchant</strong> (1) ↔ (1) <strong>CreditScore</strong> : Chaque commerçant possède un score de crédit unique
+            </div>
+            <div class="relationship-item">
+                <strong>Merchant</strong> (1) ↔ (0..*) <strong>Loan</strong> : Un commerçant peut avoir plusieurs prêts
+            </div>
+            <div class="relationship-item">
+                <strong>Merchant</strong> (1) ↔ (0..*) <strong>QRPayment</strong> : Un commerçant peut générer plusieurs paiements QR
+            </div>
+            <div class="relationship-item">
+                <strong>Merchant</strong> (1) ↔ (0..*) <strong>MobileMoneyTransaction</strong> : Un commerçant peut traiter plusieurs transactions mobile money
+            </div>
+            <div class="relationship-item">
+                <strong>Merchant</strong> (1) ↔ (0..*) <strong>Reimbursement</strong> : Un commerçant peut demander plusieurs remboursements
+            </div>
+            <div class="relationship-item">
+                <strong>FinancingRequest</strong> (1) ↔ (0..1) <strong>Loan</strong> : Une demande de financement peut résulter en un prêt
+            </div>
+            <div class="relationship-item">
+                <strong>Loan</strong> (1) ↔ (0..*) <strong>Payment</strong> : Un prêt peut avoir plusieurs paiements
+            </div>
+            <div class="relationship-item">
+                <strong>User</strong> (1) ↔ (0..*) <strong>Notification</strong> : Un utilisateur peut recevoir plusieurs notifications
+            </div>
+            <div class="relationship-item">
+                <strong>User</strong> ←── <strong>Admin</strong> : Admin hérite de User
+            </div>
+            <div class="relationship-item">
+                <strong>User</strong> ←── <strong>Analyst</strong> : Analyst hérite de User
+            </div>
+            <div class="relationship-item">
+                <strong>User</strong> ←── <strong>Merchant</strong> : Merchant hérite de User
+            </div>
+            <div class="relationship-item">
+                <strong>Services</strong> → <strong>Repositories</strong> : Les services utilisent les repositories pour l'accès aux données
+            </div>
+        </div>
+        
+        <!-- Légende -->
+        <div class="relationships" style="margin-top: 20px;">
+            <div class="module-title">📋 Légende</div>
+            <div class="relationship-item">
+                <strong>Entités Métier</strong> : Classes principales du domaine (fond blanc)
+            </div>
+            <div class="relationship-item">
+                <strong>Services</strong> : Couche logique métier (fond violet)
+            </div>
+            <div class="relationship-item">
+                <strong>Repositories</strong> : Couche d'accès aux données (fond vert)
+            </div>
+            <div class="relationship-item">
+                <strong>Énumérations</strong> : Types énumérés (fond orange)
+            </div>
+            <div class="relationship-item">
+                <strong>Relations</strong> : (1) = un, (0..*) = zéro ou plusieurs, (0..1) = zéro ou un
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div style="text-align: center; margin-top: 30px; padding: 20px; background: linear-gradient(135deg, #2c3e50, #34495e); color: white; border-radius: 10px;">
+            <h3>🏗️ Architecture en Couches</h3>
+            <p><strong>Présentation</strong> (Interface Web/Mobile) → <strong>API Gateway</strong> → <strong>Services Métier</strong> → <strong>Repositories</strong> → <strong>Base de Données</strong></p>
+            <p>Cette architecture respecte les principes SOLID et permet une séparation claire des responsabilités.</p>
+        </div>
+    </div>
+</body>
+</html>
